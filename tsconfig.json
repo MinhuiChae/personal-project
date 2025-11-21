@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "downlevelIteration": true,
+    "module": "esnext",    
+    "strict": true,
+    "strictNullChecks": false, 
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": false,
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "emitDeclarationOnly": false,
+    "declaration": false,
+    "declarationMap": false,
+    "outDir": "dist",
+    "baseUrl": ".",   
+    "types": [
+      "webpack-env",
+    ],
+    "typeRoots" : ["src/@types", "./node_modules/@types"],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@gcdl/*":[
+        "src/core/stage/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost",
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+  ],
+//"src/works/testWorker.ts.bak", "src/works/imageLoaderWorker.ts.bak", "src/works/offCanvasWorker.ts.bak", "src/core/stage/worker/worker.ts.bak"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
