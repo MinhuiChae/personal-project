@@ -1,7 +1,8 @@
-<!-- eslint-disable prettier/prettier -->
-<template>
+ß<template>
   <div class="flex h-full">
     <div class="flex flex-col flex-1">
+    <!-- top -->
+    <ContentCenterHeader></ContentCenterHeader>
     <!-- body -->
     <ContentCenterBody :contents="contents"/>
     <!-- footer -->
@@ -15,11 +16,13 @@ import {
   toRefs,
 } from 'vue';
 import ContentCenterBody from './ContentCenterBody.vue';
+import ContentCenterHeader from './ContentCenterHeader.vue';
 
 export default defineComponent({
   name: 'ContentCenterSide',
   components: {
     ContentCenterBody,
+    ContentCenterHeader
   },
   props: {
     contents: {

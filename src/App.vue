@@ -1,35 +1,37 @@
 <template>
-<div class="flex flex-col flex-1 bg-dark text-white">
-  <AppLayout tabindex="0">
+  <div class="flex flex-col flex-1 bg-dark text-white">
+    <AppLayout tabindex="0">
       <template v-slot:top>
         <TopNav :menus="state.menus" />
       </template>
+
       <template v-slot:center>
         <CenterLayout>
           <template v-slot:left-panel>
             <div class="flex h-full transition-all" :style="previewSectionStyle">
               <ContentLeftSide
-                class="bg-dark-secondary group-hover:text-red-800"
-                :category-list=state.categoryList
-              ></ContentLeftSide>
+                class="bg-dark-deep"
+                :category-list="state.categoryList"
+              />
             </div>
+           
           </template>
+
           <template v-slot:center-panel>
             <ContentCenterSide
-              class="text-sm w-full"
+              class="text-sm bg-dark-deep w-full"
               :contents="state.contents"
             />
-        </template>
+          </template>
         </CenterLayout>
-      </template> 
-  </AppLayout>
-</div>
-
+      </template>
+    </AppLayout>
+  </div>
 </template>
 
 <script lang="ts">
 // import axios from 'axios';
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed, onMounted, provide } from 'vue';
 import TopNav from './components/top/TopNav.vue';
 import AppLayout from './components/layouts/AppLayout.vue';
 import CenterLayout from './components/layouts/CenterLayout.vue';
@@ -90,8 +92,14 @@ export default defineComponent({
           name: 'C부서'
         }
       ],
-      previewResizeWidth: 300
+      previewResizeWidth: 200
     })
+
+    const categoryState = reactive({
+      currentCategory: JSON.parse(localStorage.getItem('currentCategory'))
+    })
+
+    provide('categoryState', categoryState);
 
     const previewSectionStyle = computed(() => {
       return{
@@ -99,6 +107,10 @@ export default defineComponent({
         opacity: 1,
       }
     })
+
+    onMounted(() => {
+    })
+
     return {
       state,
       previewSectionStyle 

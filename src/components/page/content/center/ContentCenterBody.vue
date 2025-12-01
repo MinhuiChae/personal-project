@@ -1,4 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
 <template>
   <div class="flex h-full">
     <div class="flex flex-col flex-1">
