@@ -1,6 +1,15 @@
-interface IContent {
+interface ICategory {
     id: number,
     name: string
+}
+
+interface IContent {
+    id: number,
+    title: string,
+    location: string,
+    category: ICategory,
+    register: string,
+    content: string
 }
 
 interface IProvideCategoryInfo {
@@ -12,6 +21,7 @@ interface IProvideCategoryInfo {
 }
 
 export{
+    ICategory,
     IContent,
     IProvideCategoryInfo
 }

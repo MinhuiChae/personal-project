@@ -14,23 +14,15 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr v-for="item in contentItems" :key="item.id" class="text-center hover:bg-gray-50">
-            <td class="px-2 py-1 border">Actions</td>
-            <td class="px-2 py-1 border">{{ item.location }}</td>
-            <td class="px-2 py-1 border">{{ item.folder }}</td>
-            <td class="px-2 py-1 border">{{ item.title }}</td>
-            <td class="px-2 py-1 border">{{ item.content }}</td>
-            <td class="px-2 py-1 border">{{ item.author }}</td>
-          </tr> -->
-          <tr>
+          <tr v-for="item in contentItems" :key="item.id">
             <td> 
               <ContentListItemAction class="pl-4" />
             </td>
-            <td class="pl-4"> M</td>
-            <td class="pl-4"> </td>
-            <td class="pl-4"> 테스트 영상입니다.</td>
-            <td class="pl-4"> </td>
-            <td class="pl-4"> 채민희</td>
+             <td class="pl-4"> {{ item.location }}</td>
+            <td class="pl-4">{{ item.category.name }}</td>
+            <td class="pl-4">{{ item.title }}</td>
+            <td class="pl-4">{{ item.content }}</td>
+            <td class="pl-4">{{ item.register }}</td>
           </tr>
         </tbody>
       </table>
@@ -42,17 +34,20 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import ContentListItemAction from '../listItem/ContentListItemAction.vue';
+import { IContent } from '@/interface/ui';
+import type { PropType } from 'vue';
 
 export default defineComponent({
   components: {
     ContentListItemAction,
   },
-  props: {
-    contentItems: {
-      type: Array,
-      default: () => [] as any[],
-    },
+props: {
+  contentItems: {
+    type: Array as PropType<IContent[]>,
+    default: () => [] as IContent[],
   },
+},
+
 });
 </script>
 

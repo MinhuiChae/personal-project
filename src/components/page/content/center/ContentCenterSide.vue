@@ -15,6 +15,7 @@ import {
   reactive,
   toRefs,
 } from 'vue';
+import { IContent } from '@/interface/ui';
 import ContentCenterBody from './ContentCenterBody.vue';
 import ContentCenterHeader from './ContentCenterHeader.vue';
 
@@ -26,8 +27,8 @@ export default defineComponent({
   },
   props: {
     contents: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [] as  IContent[],
     },
   },
   setup() {

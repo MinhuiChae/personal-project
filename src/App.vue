@@ -31,7 +31,7 @@
 
 <script lang="ts">
 // import axios from 'axios';
-import { IProvideCategoryInfo } from './interface/ui';
+import { IProvideCategoryInfo, IContent } from './interface/ui';
 import { defineComponent, reactive, computed, onMounted, provide, watch } from 'vue';
 import TopNav from './components/top/TopNav.vue';
 import AppLayout from './components/layouts/AppLayout.vue';
@@ -83,17 +83,38 @@ export default defineComponent({
       contents: [
          {
           id: 1,
-          name: 'A부서'
+          title: '1번 제목입니다.',
+          content: '1번 내용입니다.',
+          location: 'M',
+          category: {
+            id: 1,
+            name: '컨텐츠팀'
+          },
+          register: '채민희 A'
         },
         {
           id: 2,
-          name: 'B부서'
+          title: '2번 제목입니다.',
+          content: '2번 내용입니다.',
+          location: 'S',
+          category: {
+            id: 1,
+            name: '컨텐츠팀'
+          },
+          register: '채민희 B'
         },
          {
           id: 3,
-          name: 'C부서'
-        }
-      ],
+          title: '3번 제목입니다.',
+          content: '3번 내용입니다.',
+          location: 'N',
+          category: {
+            id: 1,
+            name: '컨텐츠팀'
+          },
+          register: '채민희 C'
+        },
+      ] as IContent[],
       previewResizeWidth: categoryPanelDefaultSize
     })
 

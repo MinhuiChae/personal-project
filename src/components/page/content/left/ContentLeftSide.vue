@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { IContent, IProvideCategoryInfo } from '@/interface/ui';
+import { ICategory, IProvideCategoryInfo } from '@/interface/ui';
 import {
   defineComponent,
   reactive,
@@ -40,7 +40,7 @@ export default defineComponent({
     const state = reactive({
     });
 
-    const changeCategory = (category: IContent) => {
+    const changeCategory = (category: ICategory) => {
       // 현재 로컬에 카테고리 정보 저장
       categoryState.currentCategory= category;
       localStorage.setItem('currentCategory', JSON.stringify(category));

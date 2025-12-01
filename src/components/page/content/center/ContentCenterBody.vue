@@ -1,7 +1,7 @@
 <template>
   <div class="flex-1 w-full">
     <ContentList
-      :content-items="[]"
+      :content-items="contents"
     ></ContentList>
   </div>
   <!-- <ContentContextMenu
@@ -34,6 +34,7 @@ import {
   ref,
 } from 'vue';
 import ContentList from './ContentList.vue';
+import { IContent } from '@/interface/ui';
 // import ContentContextMenu from '@/src/components/page/content/contextMenu/ContentContextMenu.vue';
 export default defineComponent({
   inheritAttrs: false,
@@ -44,8 +45,8 @@ export default defineComponent({
   emits: ['on-context-menu'],
   props: {
     contents: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [] as  IContent[],
     },
     
   },
