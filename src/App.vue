@@ -51,6 +51,42 @@ export default defineComponent({
   setup() {   
     const categoryPanelDefaultSize = 200
     //실제 프로젝트에서는 inertia를 통해 db데이터를 props로 받아와서 처리하였습니다. 
+    const contents = [
+    {
+      id: 1,
+      title: '1번 제목입니다.',
+      content: '1번 내용입니다.',
+      location: 'M',
+      category: {
+        id: 1,
+        name: '컨텐츠팀'
+      },
+      register: '채민희 A'
+    },
+    {
+      id: 2,
+      title: '2번 제목입니다.',
+      content: '2번 내용입니다.',
+      location: 'S',
+      category: {
+        id: 2,
+        name: '마케팅팀'
+      },
+      register: '채민희 B'
+    },
+    {
+      id: 3,
+      title: '3번 제목입니다.',
+      content: '3번 내용입니다.',
+      location: 'N',
+      category: {
+        id: 3,
+        name: '개발팀'
+      },
+      register: '채민희 C'
+    },
+  ] as IContent[]
+
     const state = reactive ({
       menus:[
         {
@@ -80,41 +116,7 @@ export default defineComponent({
           name: '개발팀'
         }
       ],
-      contents: [
-         {
-          id: 1,
-          title: '1번 제목입니다.',
-          content: '1번 내용입니다.',
-          location: 'M',
-          category: {
-            id: 1,
-            name: '컨텐츠팀'
-          },
-          register: '채민희 A'
-        },
-        {
-          id: 2,
-          title: '2번 제목입니다.',
-          content: '2번 내용입니다.',
-          location: 'S',
-          category: {
-            id: 1,
-            name: '컨텐츠팀'
-          },
-          register: '채민희 B'
-        },
-         {
-          id: 3,
-          title: '3번 제목입니다.',
-          content: '3번 내용입니다.',
-          location: 'N',
-          category: {
-            id: 1,
-            name: '컨텐츠팀'
-          },
-          register: '채민희 C'
-        },
-      ] as IContent[],
+      contents: contents,
       previewResizeWidth: categoryPanelDefaultSize
     })
 
@@ -136,12 +138,26 @@ export default defineComponent({
       state.previewResizeWidth = categoryState.isShowCategoryPanel ? categoryPanelDefaultSize : 0;
     }
 
+    const filterContent = () => {
+      state.contents = contents;
+      if(categoryState.currentCategory?.id) {
+        state.contents = state.contents.filter((content: IContent) => content.category.id === categoryState.currentCategory.id)
+      }
+    }
+
     onMounted(() => {
+      // 임의로 화면단에서 filter처리
+      filterContent()
     })
 
     watch(
       () => categoryState.isShowCategoryPanel,
       () => handleCategoryPanel()
+    )
+
+    watch(
+      () => categoryState.currentCategory,
+      () => filterContent()
     )
 
     return {
