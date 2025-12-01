@@ -30,6 +30,7 @@
     "url": "git+https://github.com/gemiso-dev/gemiso-web-video-editor.git"
   },
   "dependencies": {
+    "@heroicons/vue": "^1.0.6",
     "@types/gapi": "^0.0.44",
     "@types/offscreencanvas": "^2019.7.0",
     "core-js": "^3.8.3",
