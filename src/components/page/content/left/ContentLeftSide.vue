@@ -6,8 +6,8 @@
         @click.stop="changeCategory(category)"
         class="cursor-pointer p-2"
         :class="{
-          'bg-primary text-white': categoryState.currentCategory.id === category.id,
-          'hover:bg-primary/50': categoryState.currentCategory.id !== category.id
+          'bg-primary text-white': categoryState.currentCategory?.id === category.id,
+          'hover:bg-primary/50': categoryState.currentCategory?.id !== category.id
         }"
       >
         {{ category.name }}
@@ -47,7 +47,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      
+
     })
 
     return {

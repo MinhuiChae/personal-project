@@ -1,27 +1,27 @@
 <template>
-   <div class="flex ml-2">
+  <div class="flex">
     <div
-      class="mr-2 flex items-center justify-center bg-theme-primary text-theme-text-tab-active font-600 pl-4 pr-4 h-filter-button rounded-half cursor-pointer"
-      v-tooltip="'tooptip'"
+      class="mr-2 flex items-center justify-center font-600 pl-4 pr-4 mt-4 rounded-xl cursor-pointer min-h-[32px]"
+      :class="categoryState.currentCategory 
+        ? 'bg-primary text-white' 
+        : 'bg-transparent'"
     >
-      <FilterSearchIcon class="fill-theme-text-tab-active h-4 w-4" />
-      <span class="pl-1">{{ categoryState.currentCategory.name}}</span>
-      <XIcon
-        class="fill-theme-text-tab-active h-4 w-4 rounded-full hover:opacity-50"
-       
-      />
+      <template v-if="categoryState.currentCategory">
+        <FilterSearchIcon class="fill-white h-4 w-4" />
+        <span class="pl-1">{{ categoryState.currentCategory.name }}</span>
+        <XIcon
+          class="fill-white h-4 w-4 rounded-full hover:opacity-50 ml-1"
+          @click="deleteMyFilter"
+        />
+      </template>
     </div>
   </div>
 </template>
+
 <script lang="ts">
+import { defineComponent, inject } from 'vue';
 import FilterSearchIcon from '@/components/icon/FilterSearchIcon.vue';
 import XIcon from '@/components/icon/XIcon.vue';
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  inject
-} from 'vue';
 
 export default defineComponent({
   name: 'ContentCenterHeader',
@@ -29,22 +29,15 @@ export default defineComponent({
     FilterSearchIcon,
     XIcon
   },
-  props: {
-    contents: {
-      type: Object,
-      default: () => {},
-    },
-  },
   setup() {
     const categoryState = inject('categoryState') as any;
-    const state = reactive({
-      
-    });
 
-    return {
-      ...toRefs(state),
-      categoryState
+    const deleteMyFilter = () => {
+      localStorage.removeItem('currentCategory');
+      categoryState.currentCategory = null;
     };
-  },
+
+    return { categoryState, deleteMyFilter };
+  }
 });
 </script>

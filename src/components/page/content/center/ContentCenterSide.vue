@@ -1,6 +1,6 @@
 ß<template>
   <div class="flex h-full">
-    <div class="flex flex-col flex-1">
+    <div class="flex flex-col ml-2 space-y-4 flex-1">
     <!-- top -->
     <ContentCenterHeader></ContentCenterHeader>
     <!-- body -->
