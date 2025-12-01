@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { IContent } from '@/interface/ui';
+import { IContent, IProvideCategoryInfo } from '@/interface/ui';
 import {
   defineComponent,
   reactive,
@@ -36,7 +36,7 @@ export default defineComponent({
   },
   
   setup() {
-    const categoryState = inject('categoryState') as any;
+    const categoryState = inject('categoryState') as IProvideCategoryInfo;
     const state = reactive({
     });
 

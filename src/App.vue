@@ -8,7 +8,7 @@
       <template v-slot:center>
         <CenterLayout>
           <template v-slot:left-panel>
-            <div class="flex h-full transition-all" :style="previewSectionStyle">
+            <div class="flex h-full" :style="previewSectionStyle">
               <ContentLeftSide
                 class="bg-dark-deep"
                 :category-list="state.categoryList"
@@ -31,7 +31,8 @@
 
 <script lang="ts">
 // import axios from 'axios';
-import { defineComponent, reactive, computed, onMounted, provide } from 'vue';
+import { IProvideCategoryInfo } from './interface/ui';
+import { defineComponent, reactive, computed, onMounted, provide, watch } from 'vue';
 import TopNav from './components/top/TopNav.vue';
 import AppLayout from './components/layouts/AppLayout.vue';
 import CenterLayout from './components/layouts/CenterLayout.vue';
@@ -53,15 +54,15 @@ export default defineComponent({
       menus:[
         {
           id: 1,
-          name: 'menu1'
+          name: 'MY'
         },
         {
           id: 2,
-          name: 'menu2'
+          name: '검색'
         },
          {
           id: 3,
-          name: 'menu3'
+          name: '요청'
         }
       ],
       categoryList: [
@@ -96,8 +97,9 @@ export default defineComponent({
     })
 
     const categoryState = reactive({
-      currentCategory: JSON.parse(localStorage.getItem('currentCategory'))
-    })
+      currentCategory: JSON.parse(localStorage.getItem('currentCategory')),
+      isShowCategoryPanel: true
+    }) as IProvideCategoryInfo
 
     provide('categoryState', categoryState);
 
@@ -108,8 +110,17 @@ export default defineComponent({
       }
     })
 
+    const handleCategoryPanel = () => {
+      state.previewResizeWidth = categoryState.isShowCategoryPanel ? 200 : 0;
+    }
+
     onMounted(() => {
     })
+
+    watch(
+      () => categoryState.isShowCategoryPanel,
+      () => handleCategoryPanel()
+    )
 
     return {
       state,

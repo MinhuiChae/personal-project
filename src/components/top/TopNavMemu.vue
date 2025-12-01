@@ -1,9 +1,9 @@
 <template>
-  <div class="h-18 relative">
+  <div>
     <a
       v-for="menu in menus"
       :key="menu.id"
-      class="hover:text-primary cursor-pointer"
+      class="hover:text-primary font-bold cursor-pointer text-xl "
       @click.stop="onChangeMenu(menu)"
     >
       {{ menu.name }}

@@ -1,10 +1,10 @@
 <template>
   <div class ="relative ">
-    <div class="relative flex items-center border h-12 border-theme-primary bg-theme-bg-search-default rounded-md focus:outline-none focus:border-transparent focus:ring-0">
+    <div class="relative flex items-center border h-12 border-primary bg-theme-bg-search-default rounded-md focus:outline-none focus:border-transparent focus:ring-0">
       <SearchIcon
-          class="absolute ml-2 h-6 w-6 text-theme-primary cursor-pointer"
+          class="absolute ml-2 h-6 w-6 text-primary cursor-pointer"
         />
-      <input class="h-10 w-full pl-10 pr-10 outline-none text-theme-text-defualt rounded-md border-0 bg-transparent focus:ring-0"
+      <input class="h-10 w-full pl-10 pr-10 outline-none rounded-md border-0 bg-transparent focus:ring-0"
       />
     </div>
   </div>

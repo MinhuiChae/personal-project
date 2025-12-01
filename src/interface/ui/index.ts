@@ -3,6 +3,15 @@ interface IContent {
     name: string
 }
 
+interface IProvideCategoryInfo {
+    currentCategory?: {
+        id: number,
+        name: string
+    },
+    isShowCategoryPanel?: boolean
+}
+
 export{
-    IContent
+    IContent,
+    IProvideCategoryInfo
 }
