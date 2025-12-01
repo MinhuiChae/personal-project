@@ -3,6 +3,7 @@
     <a
       v-for="menu in menus"
       :key="menu.id"
+      class="hover:text-primary cursor-pointer"
       @click.stop="onChangeMenu(menu)"
     >
       {{ menu.name }}

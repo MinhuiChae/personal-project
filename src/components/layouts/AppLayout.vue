@@ -3,7 +3,7 @@
     <div class="w-full flex">
       <slot name="top"></slot>
     </div>
-    <div class="flex flex-1 overflow-hidden">
+    <div class="flex flex-1 overflow-hidden pt-4">
       <slot name="center"></slot>
     </div>
     <div class="flex flex-2 bg-theme-bg-default w-full justify-end">

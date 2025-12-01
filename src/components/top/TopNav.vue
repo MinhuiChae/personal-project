@@ -1,12 +1,17 @@
 <template>
   <div class="flex items-top justify-between w-full mx-auto px-4 sm:px-6 lg:px-8 pt-2">
     <div class="flex flex-1">
-      <TopNavMemu :menus="menus" class="hidden space-x-1 md:ml-10 md:flex items-center"/>
+      <TopNavMemu :menus="menus" class="hidden space-x-2 md:ml-10 md:flex items-center"/>
       <div class="flex flex-1 items-center pl-2">
         <SearchInput class="ml-2 mr-4 w-full max-w-md"></SearchInput>
       </div>
-       <div class="hidden md:flex md:items-center">
-        profile area
+       <div class="md:flex space-x-2 md:items-center">
+        <div class="hover:text-primary cursor-pointer">
+          Upload
+        </div>
+        <div>
+          Profile
+        </div>
        </div>
     </div>
   </div>
