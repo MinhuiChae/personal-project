@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 overflow-auto p-3 pb-0">
+  <div class="flex-1 w-full">
     <ContentList
       :content-items="[]"
     ></ContentList>

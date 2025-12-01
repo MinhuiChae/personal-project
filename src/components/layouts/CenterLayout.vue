@@ -5,7 +5,7 @@
     </div>
 
     <!-- 콘텐츠 영역 -->
-    <div class ='flex-1 h-auto overflow-hidden'>
+    <div class ='flex-1 h-auto'>
       <slot name="center-panel" />
     </div>
 

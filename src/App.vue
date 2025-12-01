@@ -49,6 +49,7 @@ export default defineComponent({
     ContentCenterSide
   },
   setup() {   
+    const categoryPanelDefaultSize = 200
     //실제 프로젝트에서는 inertia를 통해 db데이터를 props로 받아와서 처리하였습니다. 
     const state = reactive ({
       menus:[
@@ -68,15 +69,15 @@ export default defineComponent({
       categoryList: [
          {
           id: 1,
-          name: 'A부서'
+          name: '컨텐츠팀'
         },
         {
           id: 2,
-          name: 'B부서'
+          name: '마케팅팀'
         },
          {
           id: 3,
-          name: 'C부서'
+          name: '개발팀'
         }
       ],
       contents: [
@@ -93,7 +94,7 @@ export default defineComponent({
           name: 'C부서'
         }
       ],
-      previewResizeWidth: 200
+      previewResizeWidth: categoryPanelDefaultSize
     })
 
     const categoryState = reactive({
@@ -111,7 +112,7 @@ export default defineComponent({
     })
 
     const handleCategoryPanel = () => {
-      state.previewResizeWidth = categoryState.isShowCategoryPanel ? 200 : 0;
+      state.previewResizeWidth = categoryState.isShowCategoryPanel ? categoryPanelDefaultSize : 0;
     }
 
     onMounted(() => {
