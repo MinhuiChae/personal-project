@@ -12,6 +12,10 @@ interface IContent {
     content: string
 }
 
+interface IProvideContentInfo {
+    selectedContent?: IContent
+}
+
 interface IProvideCategoryInfo {
     currentCategory?: {
         id: number,
@@ -23,5 +27,6 @@ interface IProvideCategoryInfo {
 export{
     ICategory,
     IContent,
-    IProvideCategoryInfo
+    IProvideCategoryInfo,
+    IProvideContentInfo
 }

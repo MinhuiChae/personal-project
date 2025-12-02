@@ -31,7 +31,7 @@
 
 <script lang="ts">
 // import axios from 'axios';
-import { IProvideCategoryInfo, IContent } from './interface/ui';
+import { IProvideCategoryInfo, IContent, IProvideContentInfo } from './interface/ui';
 import { defineComponent, reactive, computed, onMounted, provide, watch } from 'vue';
 import TopNav from './components/top/TopNav.vue';
 import AppLayout from './components/layouts/AppLayout.vue';
@@ -120,12 +120,19 @@ export default defineComponent({
       previewResizeWidth: categoryPanelDefaultSize
     })
 
+    // 카테고리 정보 공유
     const categoryState = reactive({
       currentCategory: JSON.parse(localStorage.getItem('currentCategory')),
       isShowCategoryPanel: true
     }) as IProvideCategoryInfo
 
+    // 컨텐츠 정보 공유
+    const contentState = reactive({
+      selectedContent: {} as IContent
+    }) as IProvideContentInfo
+
     provide('categoryState', categoryState);
+    provide('contentState', contentState);
 
     const previewSectionStyle = computed(() => {
       return{

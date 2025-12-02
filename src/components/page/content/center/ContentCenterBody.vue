@@ -35,6 +35,7 @@ import {
 } from 'vue';
 import ContentList from './ContentList.vue';
 import { IContent } from '@/interface/ui';
+import type { PropType } from 'vue';
 // import ContentContextMenu from '@/src/components/page/content/contextMenu/ContentContextMenu.vue';
 export default defineComponent({
   inheritAttrs: false,
@@ -45,8 +46,8 @@ export default defineComponent({
   emits: ['on-context-menu'],
   props: {
     contents: {
-      type: Array,
-      default: () => [] as  IContent[],
+     type: Array as PropType<IContent[]>,
+      default: () => [] as IContent[],
     },
     
   },
