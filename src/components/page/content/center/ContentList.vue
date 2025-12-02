@@ -1,6 +1,6 @@
 <template>
-  <div class="overflow-x-scroll h-full">
-    <div class="min-w-[500px]">
+  <div class="overflow-x-scroll h-full ">
+    <div class="min-w-[500px] m-2 rounded-md bg-dark" :style="{height: 'calc(100% - 1.5rem)'}">
       <table class="table-auto w-full border-separate border-spacing-y-4">
         <thead>
           <tr class="text-left divide-x divide-gray-200">

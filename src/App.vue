@@ -96,6 +96,17 @@ export default defineComponent({
       },
       register: '채민희 C'
     },
+    {
+      id: 4,
+      title: '4번 제목입니다.',
+      content: '4번 내용입니다.',
+      location: 'O',
+      category: {
+        id: 3,
+        name: '개발팀'
+      },
+      register: '채민희 D'
+    },
   ] as IContent[]
 
     const state = reactive ({
