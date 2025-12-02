@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-top justify-between w-full mx-auto px-4 sm:px-6 lg:px-8 pt-2">
     <div class="flex flex-1">
-      <TopNavMemu :menus="menus" class="hidden space-x-4 md:ml-10 md:flex items-center"/>
+      <TopNavMemu :menus="menus" class="space-x-4 md:ml-10 md:flex items-center"/>
       <div class="flex flex-1 items-center pl-2">
         <SearchInput class="ml-2 mr-4 w-full max-w-md"></SearchInput>
       </div>
