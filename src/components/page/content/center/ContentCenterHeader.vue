@@ -57,6 +57,7 @@ export default defineComponent({
     const contentState = inject('contentState') as IProvideContentInfo;
     
     const onClickPremiereBtn = () => {
+      if(contentState.selectedContent.id)
       toast.success(`입수가 완료되었습니다.\n제목: ${contentState.selectedContent.title}`);
     }
 
