@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center space-x-2 mt-4 cursor-pointer">
+  <div class="flex items-center bg-dark space-x-2 mt-4 p-2 cursor-pointer">
     <!-- 닫기 버튼 -->
     <div class="flex items-center justify-center w-8 h-8">
       <LeftPanelCloseIcon class="fill-primary" v-if="categoryState.isShowCategoryPanel" @click.stop="categoryState.isShowCategoryPanel = false"/>

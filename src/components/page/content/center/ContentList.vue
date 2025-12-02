@@ -1,6 +1,6 @@
 <template>
-  <div class="overflow-x-scroll h-full ">
-    <div class="min-w-[500px] m-2 rounded-md bg-dark" :style="{height: 'calc(100% - 1.5rem)'}">
+  <div class="overflow-x-scroll h-full bg-dark mt-4">
+    <div class="min-w-[500px] mt-2 mr-2 mb-2 rounded-md bg-dark-deep" :style="{height: 'calc(100% - 2.5rem)'}">
       <table class="table-auto w-full border-separate border-spacing-y-4">
         <thead>
           <tr class="text-left divide-x divide-gray-200">
