@@ -24,6 +24,7 @@ module.exports = {
           deep: '#0f172a', // slate-900
           half: '#64748b', // slate-500,
           'dark-orange': '#FF6B01',
+          'theme-border-divide-default': '#222939',
           'linebtn-disable': '#384153',
           'linebtn-default': '#222939',
           'paging-current': '#222939',

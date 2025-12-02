@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full h-full pt-2 mr-2">
+  <div class="flex flex-col w-full h-full pt-2">
     <div class="flex-1 overflow-hidden flex flex-col space-y-2">
       <div v-for="category in categoryList"
         :key="category.id"

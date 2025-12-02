@@ -7,10 +7,21 @@
       <template v-slot:center>
         <CenterLayout>
           <template v-slot:left-panel>
-            <div class="flex h-full" :style="previewSectionStyle">
+            <div class="flex h-full" ref="el" :style="previewSectionStyle">
               <ContentLeftSide
                 class="bg-dark-deep"
                 :category-list="state.categoryList"
+              />
+              <ResizeHandle
+                class="h-full w-2 cursor-ew-resize transition-opacity rounded-full"
+                :class="[
+                  state.isDragging ? 'bg-primary' : 'bg-dark hover:bg-primary/70'
+                ]"
+                :el="el"
+                :elPosition="'left'"
+                @on-mouse-move="onMouseResizeMove"
+                @on-mouse-down="onMouseResizeDown"
+                @on-mouse-up="onMouseResizeUp"
               />
             </div>
           </template>
@@ -29,12 +40,13 @@
 <script lang="ts">
 // import axios from 'axios';
 import { IProvideCategoryInfo, IContent, IProvideContentInfo } from './interface/ui';
-import { defineComponent, reactive, computed, onMounted, provide, watch } from 'vue';
+import { defineComponent, reactive, computed, onMounted, provide, watch, ref } from 'vue';
 import TopNav from './components/top/TopNav.vue';
 import AppLayout from './components/layouts/AppLayout.vue';
 import CenterLayout from './components/layouts/CenterLayout.vue';
 import ContentLeftSide from './components/page/content/left/ContentLeftSide.vue';
 import ContentCenterSide from './components/page/content/center/ContentCenterSide.vue';
+import ResizeHandle from './components/common/ResizeHandle.vue';
 
 export default defineComponent({
   name: 'App',
@@ -43,9 +55,11 @@ export default defineComponent({
     AppLayout,
     CenterLayout,
     ContentLeftSide,
-    ContentCenterSide
+    ContentCenterSide,
+    ResizeHandle
   },
   setup() {   
+    const el = ref<HTMLElement>();
     const categoryPanelDefaultSize = 200
     //실제 프로젝트에서는 inertia를 통해 db데이터를 props로 받아와서 처리하였습니다. 
     const contents = [
@@ -114,7 +128,10 @@ export default defineComponent({
         }
       ],
       contents: contents,
-      previewResizeWidth: categoryPanelDefaultSize
+      previewResizeWidth: categoryPanelDefaultSize,
+      previewResizeMinWidth: categoryPanelDefaultSize,
+      previewResizeMaxWidth: 420,
+      isDragging: false
     })
 
     // 카테고리 정보 공유
@@ -149,6 +166,21 @@ export default defineComponent({
       }
     }
 
+    const onMouseResizeMove = (size: number) => {
+      state.previewResizeWidth = Math.min(
+        Math.max(size, state.previewResizeMinWidth),
+        state.previewResizeMaxWidth
+      );
+    };
+
+    const onMouseResizeDown = () => {
+      state.isDragging = true;
+    }
+
+    const onMouseResizeUp = () => {
+      state.isDragging = false;
+    }
+
     onMounted(() => {
       // 임의로 화면단에서 filter처리
       filterContent()
@@ -165,8 +197,12 @@ export default defineComponent({
     )
 
     return {
+      el,
       state,
-      previewSectionStyle 
+      previewSectionStyle,
+      onMouseResizeMove,
+      onMouseResizeUp,
+      onMouseResizeDown
     }
   }
 });
