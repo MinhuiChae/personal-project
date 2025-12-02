@@ -10,7 +10,10 @@
           'hover:bg-primary/50': categoryState.currentCategory?.id !== category.id
         }"
       >
-        {{ category.name }}
+        <div class="flex space-x-2">
+          <FolderIcon class="w-5"/>
+          <span>{{ category.name }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -18,6 +21,7 @@
 
 <script lang="ts">
 import { ICategory, IProvideCategoryInfo } from '@/interface/ui';
+import { FolderIcon } from '@heroicons/vue/outline';
 import {
   defineComponent,
   reactive,
@@ -27,6 +31,7 @@ import {
 } from 'vue';
 export default defineComponent({
   components: {
+    FolderIcon
   },
   props: {
      categoryList: {

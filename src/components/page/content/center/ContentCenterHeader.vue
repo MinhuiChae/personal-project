@@ -6,13 +6,16 @@
       <LeftPanelOpenIcon class="fill-primary" v-if="!categoryState.isShowCategoryPanel" @click.stop="categoryState.isShowCategoryPanel = true"/>
     </div>
     <!-- 프리미어 import button -->
-    <PremiereIcon 
-      class="fill-primary" 
-      :class="{
-        'fill-primary/50' : !contentState.selectedContent?.id
-      }"
-      @click="onClickPremiereBtn()"
-    />
+    <div>
+      <PremiereIcon 
+        class="fill-primary mr-2" 
+        :class="{
+          'fill-primary/50' : !contentState.selectedContent?.id
+        }"
+        @click="onClickPremiereBtn()"
+      />
+    </div>
+   
     <!-- 선택된 필터 표시 -->
     <div
       v-if="categoryState.currentCategory"

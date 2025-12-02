@@ -1,5 +1,6 @@
 <template>
   <div class="flex-1 w-full">
+    <span class="text-primary ml-2"> 총 {{ contents.length }} 개</span>
     <ContentList
       :content-items="contents"
     ></ContentList>

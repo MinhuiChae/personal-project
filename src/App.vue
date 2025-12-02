@@ -4,7 +4,6 @@
       <template v-slot:top>
         <TopNav :menus="state.menus" />
       </template>
-
       <template v-slot:center>
         <CenterLayout>
           <template v-slot:left-panel>
@@ -14,9 +13,7 @@
                 :category-list="state.categoryList"
               />
             </div>
-           
           </template>
-
           <template v-slot:center-panel>
             <ContentCenterSide
               class="text-sm bg-dark-deep w-full"
