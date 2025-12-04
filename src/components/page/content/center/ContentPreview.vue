@@ -8,11 +8,19 @@
         <div
           class="border-b bg-white dark:bg-dark border-gray-200 dark:border-dark-border px-2 py-3 sm:px-3 rounded-t-lg flex items-center justify-between"
         >
-          <div class="flex items-center">
+          <div class="flex items-center font-semibold">
             {{ contentState.selectedContent.title }}
           </div>
           <XIcon class="cursor-pointer" @click="closePreviewPanel"/>
         </div>
+      </div>
+      <div class="bg-dark h-full flex flex-col items-center">
+        <!-- player -->
+        <div
+          class="w-[95%] h-[150px] bg-black rounded-lg border border-white mt-4"
+        ></div>
+        <!-- content info -->
+        <ContentInfo />
       </div>
     </div>
   </div>
@@ -24,13 +32,15 @@ import {
   toRefs,
   inject,
 } from 'vue';
+import ContentInfo from './ContentInfo.vue';
 import { IProvideContentInfo } from '@/interface/ui';
 import XIcon from '@/components/icon/XIcon.vue';
 
 export default defineComponent({
   name: 'ContentCenterSide',
   components: {
-    XIcon 
+    XIcon,
+    ContentInfo
   },
   props: {
   },
