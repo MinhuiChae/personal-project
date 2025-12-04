@@ -79,7 +79,6 @@ export default defineComponent({
     } 
 
     const onMouseResizeMove = (size: number) => {
-      console.error('move');
       state.previewResizeWidth = Math.min(
         Math.max(size, state.previewResizeMinWidth),
         state.previewResizeMaxWidth
@@ -87,7 +86,6 @@ export default defineComponent({
     };
 
     const onMouseResizeDown = () => {
-      console.error('down');
       state.isDragging = true;
     }
 

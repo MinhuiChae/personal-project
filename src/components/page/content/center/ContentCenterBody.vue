@@ -58,15 +58,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
-.scroll-test::-webkit-scrollbar {
-  color: transparent;
-  width: 10px;
-  background-color: transparent;
-}
-
-.scroll-test:hover::-webkit-scrollbar-thumb {
-  background-color: #ff6b01;
-  border-radius: 12px;
-}
-</style>
