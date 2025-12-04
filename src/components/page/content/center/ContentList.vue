@@ -62,6 +62,7 @@ export default defineComponent({
     const onClickItem = (item: IContent) => {
       selectedId.value = item.id;
       contentState.selectedContent = item;
+      contentState.isShowPreviewPanel = true;
     };
 
     return {

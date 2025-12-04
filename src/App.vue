@@ -153,7 +153,8 @@ export default defineComponent({
 
     // 컨텐츠 정보 공유
     const contentState = reactive({
-      selectedContent: {} as IContent
+      selectedContent: {} as IContent,
+      isShowPreviewPanel: false
     }) as IProvideContentInfo
 
     provide('categoryState', categoryState);

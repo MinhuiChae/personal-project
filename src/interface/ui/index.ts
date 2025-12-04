@@ -13,7 +13,8 @@ interface IContent {
 }
 
 interface IProvideContentInfo {
-    selectedContent?: IContent
+    selectedContent?: IContent,
+    isShowPreviewPanel?: boolean
 }
 
 interface IProvideCategoryInfo {
