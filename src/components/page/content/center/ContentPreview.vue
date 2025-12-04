@@ -17,7 +17,7 @@
       <div class="bg-dark h-full flex flex-col items-center">
         <!-- player -->
         <div
-          class="w-[95%] h-[150px] bg-black rounded-lg border border-white mt-4"
+          class="w-[95%] h-[210px] bg-black rounded-lg border border-white mt-4"
         ></div>
         <!-- content info -->
         <ContentInfo />
