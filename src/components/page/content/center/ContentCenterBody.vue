@@ -5,27 +5,6 @@
       :content-items="contents"
     ></ContentList>
   </div>
-  <!-- <ContentContextMenu
-    ref="contextMenuRef"
-    :isShow="isOpenContextMenu"
-    :position="contextMenuPosition"
-    :selectedContentItems="selectedContentItems"
-    :item-type="contextMenuItemsType"
-    :download-type="downloadType"
-    :isEnablePersonalFolder="isEnablePersonalFolder"
-    :folderHasModifyGrant="folderHasModifyGrant"
-    :contentSearchPageType="contentSearchPageType"
-    :categoryMetaField="categoryMetaField"
-    :isUserInAdminGroup="isUserInAdminGroup"
-    :accountUserInfo="accountUserInfo"
-    :bookmarkGroup="bookmarkGroup"
-    :extensions="extensions"
-    :downloadPresets="downloadPresets"
-    :attachment-file-categories="attachmentFileCategories"
-    @on-context-menu-action="onContextMenuAction"
-    @lock_sequence_material="lockSequenceMaterial"
-    @cancel_lock_sequence_material="cancelLockSequenceMaterial"
-  /> -->
 </template>
 <script lang="ts">
 import {
@@ -37,12 +16,10 @@ import {
 import ContentList from './ContentList.vue';
 import { IContent } from '@/interface/ui';
 import type { PropType } from 'vue';
-// import ContentContextMenu from '@/src/components/page/content/contextMenu/ContentContextMenu.vue';
 export default defineComponent({
   inheritAttrs: false,
   components: {
     ContentList,
-    // ContentContextMenu,
   },
   emits: ['on-context-menu'],
   props: {
