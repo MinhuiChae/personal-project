@@ -9,7 +9,10 @@
     <!-- preview -->
     <div class="flex" ref="el" :style="previewSectionStyle">
       <!-- <ResizeHandle
-        class="h-full w-2 cursor-ew-resize bg-theme-border-divide-default transition-opacity hover:bg-theme-border-divide-hover"
+        class="h-full w-2 cursor-ew-resize transition-opacity rounded-full"
+        :class="[
+          isDragging ? 'bg-primary' : 'bg-dark hover:bg-primary/70'
+        ]"
         :el="el"
         @on-mouse-move="onMouseResizeMove"
         @on-mouse-down="onMouseResizeDown"
@@ -27,20 +30,23 @@ import {
   computed,
   watch,
   inject,
-  onMounted
+  onMounted,
+  ref
 } from 'vue';
 import { IContent } from '@/interface/ui';
 import ContentCenterBody from './ContentCenterBody.vue';
 import ContentPreview from './ContentPreview.vue';
 import ContentCenterHeader from './ContentCenterHeader.vue';
 import { IProvideContentInfo } from '@/interface/ui';
+// import ResizeHandle from '@/components/common/ResizeHandle.vue';
 
 export default defineComponent({
   name: 'ContentCenterSide',
   components: {
     ContentCenterBody,
     ContentCenterHeader,
-    ContentPreview
+    ContentPreview,
+    // ResizeHandle
   },
   props: {
     contents: {
@@ -49,12 +55,16 @@ export default defineComponent({
     },
   },
   setup() {
+    const el = ref<HTMLElement>();
     const contentState = inject('contentState') as IProvideContentInfo;
-    const previewPanelDefaultSize = 350;
+    const previewPanelDefaultSize = 400;
 
     const state = reactive({
       minWidth: 350,
-      previewResizeWidth: previewPanelDefaultSize
+      previewResizeWidth: previewPanelDefaultSize,
+      previewResizeMinWidth: previewPanelDefaultSize,
+      previewResizeMaxWidth: 420,
+      isDragging: false
     });
 
     const previewSectionStyle = computed(() => {
@@ -68,6 +78,23 @@ export default defineComponent({
       state.previewResizeWidth = contentState.isShowPreviewPanel ? previewPanelDefaultSize : 0;
     } 
 
+    const onMouseResizeMove = (size: number) => {
+      console.error('move');
+      state.previewResizeWidth = Math.min(
+        Math.max(size, state.previewResizeMinWidth),
+        state.previewResizeMaxWidth
+      );
+    };
+
+    const onMouseResizeDown = () => {
+      console.error('down');
+      state.isDragging = true;
+    }
+
+    const onMouseResizeUp = () => {
+      state.isDragging = false;
+    }
+
     onMounted(() => {
       handlePreviewPanel();
     })
@@ -79,7 +106,11 @@ export default defineComponent({
   
     return {
       ...toRefs(state),
-      previewSectionStyle
+      previewSectionStyle,
+      el,
+      onMouseResizeMove,
+      onMouseResizeDown,
+      onMouseResizeUp
     };
   },
 });
