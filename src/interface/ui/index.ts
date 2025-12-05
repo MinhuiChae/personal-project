@@ -1,3 +1,4 @@
+import ETechStack from "@/enums/eTechStack"
 interface ICategory {
     id: number,
     name: string
@@ -6,9 +7,8 @@ interface ICategory {
 interface IContent {
     id: number,
     title: string,
-    location: string,
+    techStack: ETechStack[],
     category: ICategory,
-    register: string,
     content: string
 }
 

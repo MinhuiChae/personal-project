@@ -5,11 +5,9 @@
         <thead>
           <tr class="text-left divide-x divide-gray-200">
             <th class="pl-4">ACTIONS</th>
-            <th class="pl-4">위치정보</th>
             <th class="pl-4">폴더</th>
+            <th class="pl-4">기술스택</th>
             <th class="pl-4">제목</th>
-            <th class="pl-4">내용</th>
-            <th class="pl-4">등록자</th>
           </tr>
         </thead>
         <tbody>
@@ -25,11 +23,15 @@
             <td>
               <ContentListItemAction class="pl-4" />
             </td>
-            <td class="pl-4">{{ item.location }}</td>
             <td class="pl-4">{{ item.category.name }}</td>
+            <td class="pl-4">
+              <div class="flex space-x-2 items-center">
+                <div v-for="techStack in item.techStack" :key="techStack">
+                <TechStackChip :status="techStack" />
+              </div>
+              </div>
+            </td>
             <td class="pl-4">{{ item.title }}</td>
-            <td class="pl-4">{{ item.content }}</td>
-            <td class="pl-4">{{ item.register }}</td>
           </tr>
         </tbody>
 
@@ -43,10 +45,12 @@ import { defineComponent, inject, ref } from 'vue';
 import ContentListItemAction from '../listItem/ContentListItemAction.vue';
 import type { IContent, IProvideContentInfo } from '@/interface/ui';
 import type { PropType } from 'vue';
+import TechStackChip from '@/components/chip/TechStackChip.vue';
 
 export default defineComponent({
   components: {
     ContentListItemAction,
+    TechStackChip
   },
 
   props: {
