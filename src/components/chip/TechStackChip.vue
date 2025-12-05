@@ -32,7 +32,7 @@ export default {
           ret = 'purple';
           break;
         case ETechStack.SCSS:
-          ret = 'green';
+          ret = 'orange';
           break;
         case ETechStack.Tailwind:
           ret = 'blue';
