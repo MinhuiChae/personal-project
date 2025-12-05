@@ -4,7 +4,6 @@
     <textarea
       ref="input"
       class="hadow-none block w-full rounded-lg py-1 px-2 font-400 text-base bg-dark-secondary"
-      :class="inputClass"
       :value="value"
       :rows="rows"
       :readonly="readonly"
@@ -14,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 export default {
   name: 'GTextareaReadonly',
@@ -42,22 +41,11 @@ export default {
     },
   },
 
-  setup(props) {
+  setup() {
     const input = ref<HTMLElement | null>(null);
-
-    const inputClass = computed(() => {
-      if (props.disabled) {
-        return 'disabled:text-theme-text-input-disable disabled:bg-theme-bg-input-disable disabled:border-theme-border-input-disable';
-      }
-      if (props.readonly) {
-        return 'text-theme-text-input-readonly bg-theme-bg-input-readonly border-theme-border-input-readonly';
-      }
-      return 'bg-theme-bg-input-default border-theme-border-input-default';
-    });
 
     return {
       input,
-      inputClass,
     };
   },
 };
