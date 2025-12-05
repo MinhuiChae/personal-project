@@ -8,7 +8,7 @@
     <!-- 프리미어 import button -->
     <div>
       <PremiereIcon 
-        class="fill-primary mr-2" 
+        class="flex fill-primary mr-2" 
         :class="{
           'fill-primary/50' : !contentState.selectedContent?.id
         }"
