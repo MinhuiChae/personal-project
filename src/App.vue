@@ -176,7 +176,8 @@ export default defineComponent({
     // 컨텐츠 정보 공유
     const contentState = reactive({
       selectedContent: {} as IContent,
-      isShowPreviewPanel: false
+      isShowPreviewPanel: false,
+      currentTech: JSON.parse(localStorage.getItem('currentTech'))
     }) as IProvideContentInfo
 
     provide('categoryState', categoryState);
@@ -195,10 +196,24 @@ export default defineComponent({
 
     const filterContent = () => {
       state.contents = contents;
-      if(categoryState.currentCategory?.id) {
-        state.contents = state.contents.filter((content: IContent) => content.category.id === categoryState.currentCategory.id)
+
+      // 카테고리 필터
+      if (categoryState.currentCategory?.id) {
+        state.contents = state.contents.filter((content: IContent) =>
+          content.category.id === categoryState.currentCategory.id
+        );
       }
-    }
+
+      // 기술 필터
+      if (contentState.currentTech?.length > 0) {
+        state.contents = state.contents.filter((content: IContent) =>
+          content.techStack.some((tech: ETechStack) =>
+            contentState.currentTech.includes(tech)
+          )
+        );
+      }
+    };
+
 
     const onMouseResizeMove = (size: number) => {
       state.previewResizeWidth = Math.min(
@@ -226,9 +241,13 @@ export default defineComponent({
     )
 
     watch(
-      () => categoryState.currentCategory,
-      () => filterContent()
-    )
+      () => [categoryState.currentCategory, contentState.currentTech],
+      () => {
+        filterContent();
+      },
+      { deep: true }
+    );
+
 
     return {
       el,

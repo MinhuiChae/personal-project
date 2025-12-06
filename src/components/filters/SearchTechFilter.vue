@@ -11,7 +11,7 @@
         <div @click="$emit('on-refresh-filter')" class="bg-primary p-1 rounded-md">
           <RefreshIcon class="h-5 w-5"/>
         </div>
-        <div @click="$emit('on-search-filter')" class="p-1 rounded-md" :class="selectedTechs.length > 0 ? 'bg-primary' : 'bg-primary/50'">
+        <div @click="$emit('on-search-filter')" class="bg-primary p-1 rounded-md">
           <SearchIcon class="h-5 w-5"/>
         </div>
       </div>

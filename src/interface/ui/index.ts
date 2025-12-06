@@ -14,14 +14,12 @@ interface IContent {
 
 interface IProvideContentInfo {
     selectedContent?: IContent,
-    isShowPreviewPanel?: boolean
+    isShowPreviewPanel?: boolean,
+    currentTech?: ETechStack[]
 }
 
 interface IProvideCategoryInfo {
-    currentCategory?: {
-        id: number,
-        name: string
-    },
+    currentCategory?: ICategory
     isShowCategoryPanel?: boolean
 }
 
