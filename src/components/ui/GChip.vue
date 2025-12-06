@@ -1,7 +1,7 @@
 <template>
   <span
     class="inline-flex whitespace-nowrap items-center px-2.5 py-1 rounded-full text-xs font-medium"
-    :class="[bgColor, textColor]"
+    :class="selected ? 'bg-primary text-white' : [bgColor, textColor]"
   >
     {{ text }}
     <slot v-if="!text" />
@@ -34,6 +34,10 @@ export default defineComponent({
       type: String as PropType<keyof typeof colorMap>,
       required: true,
     },
+    selected: {
+      type: Boolean,
+      default: false
+    }
   },
   setup(props) {
     const [bgColor, textColor] = colorMap[props.color];

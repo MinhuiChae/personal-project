@@ -1,5 +1,8 @@
 <template>
-  <GChip :color="color">{{ status }}</GChip>
+  <GChip :color="color" :selected="selected"
+  >
+    {{ status }} 
+  </GChip>
 </template>
  
 <script>
@@ -14,10 +17,15 @@ export default {
       type: String,
       default: '',
     },
+    selected: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     color() {
       let ret = '';
+
       switch (this.status) {
         case ETechStack.HTML5:
           ret = 'gray';
@@ -32,7 +40,7 @@ export default {
           ret = 'purple';
           break;
         case ETechStack.SCSS:
-          ret = 'orange';
+          ret = 'pink';
           break;
         case ETechStack.Tailwind:
           ret = 'blue';
