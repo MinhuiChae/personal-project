@@ -30,7 +30,7 @@
     <!-- 선택된 필터 표시 -->
     <div
       v-if="displayFilters.length > 0"
-      class="flex flex-wrap items-center gap-2 px-4 py-2"
+      class="flex flex-wrap items-center gap-2 px-4"
     >
       <div
         v-for="filter in displayFilters"
